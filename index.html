@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXIOME — Studio digital premium</title>
+<meta name="description" content="AXIOME conçoit des produits numériques premium : design, développement et stratégie digitale pour marques exigeantes.">
+
+<!-- Favicon (SVG inline en data URI, aucun fichier externe requis) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232F6BFF'/%3E%3Cstop offset='1' stop-color='%2305070C'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M32 14 L48 46 L38 46 L32 32 L26 46 L16 46 Z' fill='white'/%3E%3C/svg%3E">
+
+<!-- Polices : Space Grotesk (titres) + Inter (texte courant) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Curseur personnalisé -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- Fond décoratif global : mesh de dégradés + particules -->
+<div class="bg-mesh" aria-hidden="true">
+  <span class="mesh-blob blob-1"></span>
+  <span class="mesh-blob blob-2"></span>
+  <span class="mesh-blob blob-3"></span>
+</div>
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<a class="skip-link" href="#main">Aller au contenu principal</a>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="navbar-inner glass">
+    <a href="#hero" class="brand" aria-label="AXIOME — Accueil">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28"><path d="M16 5 L27 27 L20 27 L16 15 L12 27 L5 27 Z" fill="currentColor"/></svg>
+      </span>
+      <span class="brand-name">AXIOME</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+      <a href="#apropos">À propos</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#processus">Processus</a>
+      <a href="#avis">Avis</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-primary btn-sm">
+        <span>Démarrer un projet</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <p class="hero-kicker reveal">Studio digital premium</p>
+      <h1 class="hero-title reveal">
+        Des produits numériques pensés pour durer.
+      </h1>
+      <p class="hero-sub reveal">
+        AXIOME conçoit des sites, applications et identités qui allient rigueur d'ingénierie et sens du détail. Chaque projet est construit pour l'exigence de marques qui ne transigent pas sur la qualité.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#contact" class="btn btn-primary">
+          <span>Discuter de mon projet</span>
+        </a>
+        <a href="#portfolio" class="btn btn-ghost">
+          <span>Voir nos réalisations</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-panel glass reveal" aria-hidden="true">
+      <div class="hero-panel-row">
+        <div class="hero-panel-dot dot-blue"></div>
+        <div class="hero-panel-dot dot-white"></div>
+        <div class="hero-panel-dot dot-dim"></div>
+      </div>
+      <div class="hero-panel-graph">
+        <svg viewBox="0 0 320 140" width="100%" height="100%" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#2F6BFF" stop-opacity="0"/>
+              <stop offset="0.5" stop-color="#5B8CFF"/>
+              <stop offset="1" stop-color="#2F6BFF" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2F6BFF" stop-opacity="0.35"/>
+              <stop offset="1" stop-color="#2F6BFF" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path class="graph-fill" d="M0,110 C40,90 60,40 100,50 C140,60 160,20 200,30 C240,40 260,90 320,70 L320,140 L0,140 Z" fill="url(#fillGrad)"/>
+          <path class="graph-line" d="M0,110 C40,90 60,40 100,50 C140,60 160,20 200,30 C240,40 260,90 320,70" fill="none" stroke="url(#lineGrad)" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="hero-panel-meta">
+        <div>
+          <span class="meta-label">Croissance moyenne</span>
+          <span class="meta-value">+ 128&nbsp;%</span>
+        </div>
+        <div>
+          <span class="meta-label">Temps de chargement</span>
+          <span class="meta-value">0,6&nbsp;s</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="scroll-cue" id="scrollCue" aria-label="Défiler vers le bas">
+      <span></span>
+    </button>
+  </section>
+
+  <!-- ============ À PROPOS ============ -->
+  <section class="section" id="apropos">
+    <div class="section-head reveal">
+      <h2>Une équipe, une exigence.</h2>
+      <p>Nous sommes une dizaine de designers et développeurs réunis autour d'une conviction simple&nbsp;: le numérique de qualité se construit lentement, avec méthode, jamais dans l'improvisation.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card glass glass-lg reveal">
+        <h3>Notre approche</h3>
+        <p>Chaque projet démarre par une phase d'écoute approfondie. Nous refusons les gabarits tout faits&nbsp;: la forme naît toujours du fond, du métier et des objectifs réels de nos clients.</p>
+      </div>
+      <div class="about-card glass reveal">
+        <span class="about-num">12</span>
+        <p>ans d'expertise cumulée en design d'interface et ingénierie front-end</p>
+      </div>
+      <div class="about-card glass reveal">
+        <span class="about-num">40+</span>
+        <p>marques accompagnées, de la startup en amorçage au groupe international</p>
+      </div>
+      <div class="about-card glass glass-wide reveal">
+        <h3>Notre exigence</h3>
+        <p>Performance, accessibilité et cohérence visuelle ne sont pas négociables. Un site premium doit être aussi solide en coulisses qu'élégant en surface.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="section" id="services">
+    <div class="section-head reveal">
+      <h2>Ce que nous construisons.</h2>
+      <p>Six disciplines, une seule équipe. Du premier croquis à la mise en production, nous couvrons l'ensemble de la chaîne de création digitale.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card glass reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+        </div>
+        <h3>Design UI/UX</h3>
+        <p>Interfaces claires et cohérentes, pensées à partir de parcours utilisateurs réels et testées avant livraison.</p>
+      </article>
+
+      <article class="service-card glass reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/></svg>
+        </div>
+        <h3>Développement web</h3>
+        <p>Sites et applications rapides, robustes et maintenables, construits avec des standards modernes.</p>
+      </article>
+
+      <article class="service-card glass reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
+        </div>
+        <h3>Applications mobiles</h3>
+        <p>Expériences natives et hybrides pensées pour la fluidité, du prototype au déploiement sur les stores.</p>
+      </article>
+
+      <article class="service-card glass reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg>
+        </div>
+        <h3>Branding &amp; identité</h3>
+        <p>Systèmes de marque complets&nbsp;: logo, typographie, palette et charte, cohérents sur tous les points de contact.</p>
+      </article>
+
+      <article class="service-card glass reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+        </div>
+        <h3>Stratégie digitale</h3>
+        <p>Audit, positionnement et feuille de route&nbsp;: nous alignons vos objectifs business avec vos choix technologiques.</p>
+      </article>
+
+      <article class="service-card glass reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <h3>Motion &amp; animation</h3>
+        <p>Micro-interactions et animations sur mesure qui donnent du rythme et de la clarté à l'expérience.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ STATISTIQUES ============ -->
+  <section class="section stats-section" id="stats">
+    <div class="stats-panel glass glass-lg reveal">
+      <div class="stat">
+        <span class="stat-value" data-target="128" data-suffix="+">0</span>
+        <span class="stat-label">projets livrés</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" data-target="98" data-suffix="%">0</span>
+        <span class="stat-label">clients satisfaits</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" data-target="12" data-suffix=" ans">0</span>
+        <span class="stat-label">d'expérience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" data-target="24" data-suffix="/7">0</span>
+        <span class="stat-label">support dédié</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PORTFOLIO ============ -->
+  <section class="section" id="portfolio">
+    <div class="section-head reveal">
+      <h2>Réalisations sélectionnées.</h2>
+      <p>Un aperçu de projets menés pour des clients aux besoins variés — web, mobile et identité de marque.</p>
+    </div>
+
+    <div class="filters reveal" role="tablist" aria-label="Filtrer le portfolio">
+      <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">Tout</button>
+      <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web</button>
+      <button class="filter-btn" data-filter="mobile" role="tab" aria-selected="false">Mobile</button>
+      <button class="filter-btn" data-filter="branding" role="tab" aria-selected="false">Branding</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+      <article class="portfolio-item reveal" data-category="web">
+        <div class="portfolio-thumb thumb-1">
+          <span class="thumb-tag">Web</span>
+        </div>
+        <div class="portfolio-info">
+          <h3>Néréide Finance</h3>
+          <p>Plateforme de gestion patrimoniale — refonte complète UX et front-end.</p>
+        </div>
+      </article>
+      <article class="portfolio-item reveal" data-category="branding">
+        <div class="portfolio-thumb thumb-2">
+          <span class="thumb-tag">Branding</span>
+        </div>
+        <div class="portfolio-info">
+          <h3>Lumen Atelier</h3>
+          <p>Identité visuelle complète pour une maison de design d'objets.</p>
+        </div>
+      </article>
+      <article class="portfolio-item reveal" data-category="mobile">
+        <div class="portfolio-thumb thumb-3">
+          <span class="thumb-tag">Mobile</span>
+        </div>
+        <div class="portfolio-info">
+          <h3>Orbite Santé</h3>
+          <p>Application de suivi médical, pensée pour la clarté et l'accessibilité.</p>
+        </div>
+      </article>
+      <article class="portfolio-item reveal" data-category="web">
+        <div class="portfolio-thumb thumb-4">
+          <span class="thumb-tag">Web</span>
+        </div>
+        <div class="portfolio-info">
+          <h3>Verrière Immobilier</h3>
+          <p>Vitrine premium pour un promoteur immobilier haut de gamme.</p>
+        </div>
+      </article>
+      <article class="portfolio-item reveal" data-category="mobile">
+        <div class="portfolio-thumb thumb-5">
+          <span class="thumb-tag">Mobile</span>
+        </div>
+        <div class="portfolio-info">
+          <h3>Solstice Voyage</h3>
+          <p>Application de réservation de voyages sur mesure, multi-plateforme.</p>
+        </div>
+      </article>
+      <article class="portfolio-item reveal" data-category="branding">
+        <div class="portfolio-thumb thumb-6">
+          <span class="thumb-tag">Branding</span>
+        </div>
+        <div class="portfolio-info">
+          <h3>Argon Studio</h3>
+          <p>Système de marque pour un studio de production audiovisuelle.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ TIMELINE / PROCESSUS ============ -->
+  <section class="section" id="processus">
+    <div class="section-head reveal">
+      <h2>Comment nous travaillons.</h2>
+      <p>Un processus en quatre étapes, éprouvé sur des dizaines de projets, pour avancer avec clarté du premier échange à la mise en ligne.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-line" aria-hidden="true"></div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-marker">01</div>
+        <div class="timeline-card glass">
+          <h3>Découverte</h3>
+          <p>Ateliers de cadrage, audit de l'existant et définition des objectifs mesurables du projet.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-marker">02</div>
+        <div class="timeline-card glass">
+          <h3>Conception</h3>
+          <p>Architecture de l'information, wireframes puis design d'interface haute-fidélité, validés par itérations.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-marker">03</div>
+        <div class="timeline-card glass">
+          <h3>Développement</h3>
+          <p>Intégration front-end soignée, tests multi-appareils et optimisation des performances.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-marker">04</div>
+        <div class="timeline-card glass">
+          <h3>Lancement</h3>
+          <p>Mise en production accompagnée, suivi post-lancement et transmission des bonnes pratiques.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TÉMOIGNAGES ============ -->
+  <section class="section" id="avis">
+    <div class="section-head reveal">
+      <h2>Ce qu'en disent nos clients.</h2>
+    </div>
+
+    <div class="testimonial-wrap reveal">
+      <div class="testimonial-track glass glass-lg" id="testimonialTrack">
+        <div class="testimonial-slide is-active">
+          <p class="testimonial-quote">« AXIOME a transformé notre plateforme sans jamais perdre de vue nos contraintes métier. Le résultat est à la fois élégant et redoutablement efficace. »</p>
+          <div class="testimonial-author">
+            <span class="author-avatar" style="--av-a:#2F6BFF;--av-b:#0B0F1A;">CM</span>
+            <div>
+              <span class="author-name">Camille Moreau</span>
+              <span class="author-role">Directrice produit, Néréide Finance</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-slide">
+          <p class="testimonial-quote">« Un vrai sens du détail, de la première maquette jusqu'au dernier pixel en production. L'équipe a su traduire notre identité avec justesse. »</p>
+          <div class="testimonial-author">
+            <span class="author-avatar" style="--av-a:#5B8CFF;--av-b:#05070C;">TL</span>
+            <div>
+              <span class="author-name">Thomas Lenoir</span>
+              <span class="author-role">Fondateur, Lumen Atelier</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-slide">
+          <p class="testimonial-quote">« Le meilleur partenaire digital avec lequel nous ayons travaillé. Rigoureux sur les délais, exigeants sur la qualité. »</p>
+          <div class="testimonial-author">
+            <span class="author-avatar" style="--av-a:#2F6BFF;--av-b:#05070C;">SB</span>
+            <div>
+              <span class="author-name">Sarah Benali</span>
+              <span class="author-role">CEO, Orbite Santé</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-controls">
+        <button class="carousel-btn" id="prevTestimonial" aria-label="Témoignage précédent">‹</button>
+        <div class="testimonial-dots" id="testimonialDots"></div>
+        <button class="carousel-btn" id="nextTestimonial" aria-label="Témoignage suivant">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="section-head reveal">
+      <h2>Questions fréquentes.</h2>
+    </div>
+
+    <div class="faq-list reveal">
+      <div class="faq-item glass">
+        <button class="faq-question" aria-expanded="false">
+          <span>Combien de temps dure un projet type&nbsp;?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Un site vitrine complet prend en moyenne 4 à 6 semaines, une application plus complexe de 8 à 14 semaines. Le délai exact dépend du périmètre défini lors du cadrage initial.</p>
+        </div>
+      </div>
+
+      <div class="faq-item glass">
+        <button class="faq-question" aria-expanded="false">
+          <span>Travaillez-vous avec des entreprises en dehors de France&nbsp;?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Oui, une part importante de nos clients est basée hors de France. Nos échanges se font en français ou en anglais selon vos préférences, en visioconférence.</p>
+        </div>
+      </div>
+
+      <div class="faq-item glass">
+        <button class="faq-question" aria-expanded="false">
+          <span>Proposez-vous un accompagnement après la mise en ligne&nbsp;?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Chaque projet inclut une période de suivi post-lancement. Des forfaits de maintenance et d'évolution sont ensuite disponibles selon vos besoins.</p>
+        </div>
+      </div>
+
+      <div class="faq-item glass">
+        <button class="faq-question" aria-expanded="false">
+          <span>Comment se déroule la première prise de contact&nbsp;?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Vous nous décrivez votre projet via le formulaire de contact. Nous revenons vers vous sous 48 heures pour planifier un premier échange de cadrage, sans engagement.</p>
+        </div>
+      </div>
+
+      <div class="faq-item glass">
+        <button class="faq-question" aria-expanded="false">
+          <span>Quels budgets prévoir pour un projet AXIOME&nbsp;?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Nos projets démarrent généralement à partir de 8 000&nbsp;€. Un chiffrage précis est établi après le cadrage, en fonction du périmètre et des délais souhaités.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact">
+    <div class="contact-grid">
+      <div class="contact-intro reveal">
+        <h2>Parlons de votre projet.</h2>
+        <p>Décrivez-nous votre besoin&nbsp;: nous revenons vers vous sous 48&nbsp;heures ouvrées avec un premier retour concret.</p>
+
+        <div class="contact-details">
+          <div class="contact-detail">
+            <span class="detail-label">Email</span>
+            <span class="detail-value">contact@axiome-studio.fr</span>
+          </div>
+          <div class="contact-detail">
+            <span class="detail-label">Téléphone</span>
+            <span class="detail-value">+33 1 84 60 12 30</span>
+          </div>
+          <div class="contact-detail">
+            <span class="detail-label">Studio</span>
+            <span class="detail-value">14 rue de la Verrerie, 75004 Paris</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form glass glass-lg reveal" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fName">Nom complet</label>
+            <input type="text" id="fName" name="fName" autocomplete="name" required>
+            <span class="field-error" id="err-fName" role="alert"></span>
+          </div>
+          <div class="form-field">
+            <label for="fEmail">Adresse email</label>
+            <input type="email" id="fEmail" name="fEmail" autocomplete="email" required>
+            <span class="field-error" id="err-fEmail" role="alert"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="fSubject">Sujet</label>
+          <input type="text" id="fSubject" name="fSubject" required>
+          <span class="field-error" id="err-fSubject" role="alert"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="fMessage">Votre message</label>
+          <textarea id="fMessage" name="fMessage" rows="5" required></textarea>
+          <span class="field-error" id="err-fMessage" role="alert"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">
+          <span id="submitLabel">Envoyer le message</span>
+        </button>
+
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-top glass">
+    <div class="footer-brand">
+      <a href="#hero" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="24" height="24"><path d="M16 5 L27 27 L20 27 L16 15 L12 27 L5 27 Z" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-name">AXIOME</span>
+      </a>
+      <p>Studio digital premium — design et développement de produits numériques d'exception.</p>
+
+      <div class="socials">
+        <a href="#" class="social-btn" aria-label="AXIOME sur LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05C19.9 8 21 10.24 21 14.03V23h-4v-8.05c0-1.92-.03-4.4-2.68-4.4-2.68 0-3.09 2.1-3.09 4.26V23h-4V8z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="AXIOME sur Instagram">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="AXIOME sur X">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7.2l-5.6-7.3L4 22H.9l8.1-9.3L.7 2h7.4l5 6.7L18.9 2zm-1.3 18h2L6.5 4H4.4l13.2 16z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="#apropos">À propos</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#processus">Processus</a>
+      </div>
+      <div class="footer-col">
+        <h4>Studio</h4>
+        <a href="#avis">Avis clients</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Newsletter</h4>
+        <p>Un e-mail par mois, nos réflexions sur le design et le développement.</p>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <input type="email" id="newsletterEmail" placeholder="Votre adresse email" aria-label="Adresse email pour la newsletter" required>
+          <button type="submit" aria-label="S'inscrire à la newsletter">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+        <span class="field-error" id="err-newsletter" role="alert"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 AXIOME Studio. Tous droits réservés.</p>
+    <div class="footer-legal">
+      <a href="#">Mentions légales</a>
+      <a href="#">Confidentialité</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Retour en haut de page">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
